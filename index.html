@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Cercle — Club Privé d’Entrepreneurs | Bordeaux & Nouvelle-Aquitaine</title>
+    <meta name="description" content="Le Cercle réunit des entrepreneurs passionnés par le développement personnel, les voyages et la liberté financière à Bordeaux et en Nouvelle-Aquitaine.">
+    
+    <!-- Google Fonts : Playfair Display (Titres) & Plus Jakarta Sans (Corps) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            DEFAULT: '#C29B27',
+                            light: '#D4AF37',
+                            dark: '#9E7D1B',
+                            soft: '#F5EED8'
+                        },
+                        navy: {
+                            DEFAULT: '#0B192C',
+                            light: '#152946',
+                            dark: '#060F1C'
+                        },
+                        charcoal: '#141414',
+                        bordeaux: {
+                            DEFAULT: '#6E2626',
+                            light: '#8B3333'
+                        },
+                        sage: {
+                            DEFAULT: '#748E7E',
+                            light: '#93B09E',
+                            mint: '#6CC49B'
+                        },
+                        terracotta: '#E86F45',
+                        cream: {
+                            DEFAULT: '#F4EFE6',
+                            off: '#FAF8F5',
+                            dark: '#E7DFD1'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Styles complémentaires et animations douces */
+        body {
+            background-color: #FAF8F5;
+            color: #141414;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .font-editorial {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        .glass-nav {
+            background: rgba(11, 25, 44, 0.94);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .card-hover {
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 35px -10px rgba(11, 25, 44, 0.12);
+        }
+        /* Accordéon fluide */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        .faq-item.active .faq-chevron {
+            transform: rotate(180deg);
+        }
+        /* Scrollbar élégante */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F4EFE6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C29B27;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold selection:text-navy">
+
+    <!-- BANDEAU D'INFORMATION PROJET EN LANCEMENT -->
+    <div class="bg-charcoal text-cream text-xs py-2 px-4 text-center border-b border-gold/20">
+        <span class="inline-flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+            <span>Lancement <strong>Bordeaux & Nouvelle-Aquitaine</strong> — Projet en phase de constitution de sa première communauté sur candidature (Nom provisoire : Le Cercle).</span>
+        </span>
+    </div>
+
+    <!-- NAVIGATION FIXE -->
+    <header id="navbar" class="sticky top-0 z-50 glass-nav text-white border-b border-white/10 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#accueil" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full border-2 border-gold flex items-center justify-center relative overflow-hidden bg-navy-dark group-hover:scale-105 transition-transform">
+                        <span class="w-4 h-4 rounded-full bg-gold/20 absolute -top-1 -right-1"></span>
+                        <span class="font-serif text-gold font-bold text-xl tracking-tighter">C</span>
+                    </div>
+                    <div>
+                        <span class="font-serif text-xl sm:text-2xl tracking-wider font-semibold text-white block leading-none">LE CERCLE</span>
+                        <span class="text-[10px] uppercase tracking-[0.22em] text-gold-light block mt-1">Bordeaux · Nouvelle-Aquitaine</span>
+                    </div>
+                </a>
+
+                <!-- Menu Desktop -->
+                <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium">
+                    <a href="#accueil" class="text-cream/90 hover:text-gold transition-colors">Accueil</a>
+                    <a href="#le-cercle" class="text-cream/90 hover:text-gold transition-colors">Le Cercle</a>
+                    <a href="#poles" class="text-cream/90 hover:text-gold transition-colors">Nos 8 Pôles</a>
+                    <a href="#rencontres" class="text-cream/90 hover:text-gold transition-colors">Adhésion & Parcours</a>
+                    <a href="#candidature" class="bg-gold hover:bg-gold-light text-navy font-bold px-5 py-2.5 rounded-lg transition-all shadow-lg shadow-gold/20">
+                        Nous rejoindre
+                    </a>
+                </nav>
+
+                <!-- Bouton Menu Mobile -->
+                <button id="mobile-menu-btn" aria-label="Ouvrir le menu" class="lg:hidden p-2.5 rounded-lg text-cream hover:bg-white/10 focus:outline-none">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Déroulant -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-navy border-t border-white/10 px-4 pt-3 pb-6 space-y-2">
+            <a href="#accueil" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-cream hover:bg-white/5 hover:text-gold">Accueil</a>
+            <a href="#le-cercle" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-cream hover:bg-white/5 hover:text-gold">Le Cercle (Fondateurs & Mission)</a>
+            <a href="#poles" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-cream hover:bg-white/5 hover:text-gold">Nos 8 Pôles</a>
+            <a href="#rencontres" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-cream hover:bg-white/5 hover:text-gold">Adhésion & Parcours</a>
+            <div class="pt-2">
+                <a href="#candidature" class="mobile-link block w-full text-center bg-gold text-navy font-bold px-5 py-3 rounded-lg">
+                    Présenter ma candidature
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- =====================================================================
+         SECTION 1 : ACCUEIL & HERO
+    ====================================================================== -->
+    <section id="accueil" class="relative bg-navy text-white overflow-hidden py-16 sm:py-24 lg:py-28">
+        <!-- Éléments graphiques géométriques inspirés de la maquette PPTX -->
+        <div class="absolute top-12 right-[-60px] w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-terracotta/20 blur-2xl pointer-events-none"></div>
+        <div class="absolute bottom-[-80px] left-[-40px] w-80 h-80 rounded-full bg-sage/20 blur-2xl pointer-events-none"></div>
+        <div class="hidden md:block absolute top-0 right-1/4 w-3 h-40 bg-gold/40"></div>
+        <div class="hidden md:block absolute bottom-16 right-10 w-64 h-4 bg-sage-mint/30 -rotate-12 rounded-full"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Colonne Texte -->
+                <div class="lg:col-span-7 space-y-7">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-gold/40 text-gold-light text-xs sm:text-sm font-medium tracking-wide">
+                        <i data-lucide="compass" class="w-4 h-4 text-gold"></i>
+                        <span>Bordeaux & Nouvelle-Aquitaine · Passerelles entre territoires</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-[54px] font-bold leading-[1.15] text-white">
+                        Entrepreneurs, donnez de nouvelles dimensions à <span class="text-gold italic font-normal">votre liberté.</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-cream/90 font-medium leading-relaxed">
+                        Voyager davantage. Grandir personnellement. Diversifier vos revenus. Partager vos projets avec des personnes qui vous comprennent.
+                    </p>
+
+                    <p class="text-base text-cream/75 leading-relaxed max-w-2xl">
+                        Le Cercle réunit des entrepreneurs passionnés par le développement personnel, les voyages et la liberté financière. Un environnement privé pour apprendre, vivre des expériences et préparer de nouveaux projets.
+                    </p>
+
+                    <!-- Boutons d'action principaux -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a href="#candidature" class="inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-light text-navy font-bold px-7 py-4 rounded-xl text-sm uppercase tracking-wider transition-all shadow-xl shadow-gold/20">
+                            <span>Présenter ma candidature</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#poles" class="inline-flex items-center justify-center gap-2 bg-navy-light hover:bg-white/10 text-gold border-2 border-gold font-bold px-7 py-4 rounded-xl text-sm uppercase tracking-wider transition-all">
+                            <span>Découvrir nos huit pôles</span>
+                        </a>
+                    </div>
+
+                    <p class="text-xs text-cream/60 italic pt-1">
+                        * Le Cercle se construit actuellement. Les candidatures permettent de préparer la première communauté et son programme sans engagement financier.
+                    </p>
+                </div>
+
+                <!-- Colonne Visuelle Artistique / Géométrique (Style Maquette PPTX) -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md">
+                        <!-- Formes géométriques signature du PPTX -->
+                        <div class="absolute -top-5 -left-5 w-24 h-24 rounded-full bg-terracotta z-0 opacity-90"></div>
+                        <div class="absolute -bottom-5 -right-5 w-32 h-32 rounded-2xl bg-gold/80 z-0"></div>
+                        <div class="absolute top-1/2 -left-8 w-44 h-4 bg-sage-mint -rotate-45 z-20 rounded-full shadow-md"></div>
+
+                        <!-- Carte Éditoriale Principale -->
+                        <div class="relative z-10 bg-cream text-charcoal rounded-2xl p-7 sm:p-8 shadow-2xl border border-gold/30">
+                            <div class="flex items-center justify-between border-b border-charcoal/10 pb-4 mb-5">
+                                <span class="text-xs font-bold uppercase tracking-widest text-bordeaux">L'Essence du Cercle</span>
+                                <div class="flex gap-1.5">
+                                    <span class="w-3 h-3 rounded-full bg-gold"></span>
+                                    <span class="w-3 h-3 rounded-full bg-bordeaux"></span>
+                                    <span class="w-3 h-3 rounded-full bg-sage"></span>
+                                </div>
+                            </div>
+
+                            <blockquote class="font-serif italic text-xl sm:text-2xl text-navy leading-snug mb-5">
+                                « Comment faire grandir votre réussite tout en retrouvant de la place pour vous ? »
+                            </blockquote>
+
+                            <ul class="space-y-3 text-sm text-charcoal/85 mb-6">
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-bordeaux shrink-0 mt-0.5"></i>
+                                    <span>Rompre la solitude du dirigeant face aux décisions clés</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-bordeaux shrink-0 mt-0.5"></i>
+                                    <span>Transformer ses revenus en patrimoine diversifié</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-bordeaux shrink-0 mt-0.5"></i>
+                                    <span>Accéder au socle voyage <strong>Travel Advantage</strong> & séjours privés</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-bordeaux shrink-0 mt-0.5"></i>
+                                    <span>Avancer entouré de pairs sélectionnés et bienveillants</span>
+                                </li>
+                            </ul>
+
+                            <div class="bg-navy text-cream rounded-xl p-4 flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs text-gold uppercase tracking-wider font-semibold">Fondateurs</p>
+                                    <p class="text-sm font-medium">Marceau, Zelimir & Jamal</p>
+                                </div>
+                                <a href="#le-cercle" class="text-xs bg-gold text-navy font-bold px-3 py-2 rounded-lg hover:bg-gold-light transition">
+                                    Découvrir
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION NOTRE PROMESSE & POUR QUI -->
+    <section class="py-16 sm:py-24 bg-cream border-b border-cream-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Notre Promesse -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
+                <div class="lg:col-span-6 space-y-5">
+                    <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-bordeaux">Notre Promesse</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-navy leading-tight">
+                        Vous portez votre entreprise. Qui vous aide à préparer la suite ?
+                    </h2>
+                    <p class="text-base text-charcoal/80 leading-relaxed">
+                        Vous avez créé votre entreprise pour construire votre liberté. Puis votre activité s’est développée, et les responsabilités aussi. Vous travaillez beaucoup, vous prenez des décisions toute la journée et même en congés, votre entreprise reste dans un coin de votre tête.
+                    </p>
+                    <p class="text-base text-charcoal/85 font-medium leading-relaxed bg-white p-5 rounded-xl border-l-4 border-gold shadow-sm">
+                        <strong>Notre promesse :</strong> aider les entrepreneurs à développer leur activité et à transformer une partie de leurs revenus professionnels en patrimoine diversifié, grâce à une méthode, un collectif et un accès organisé aux compétences nécessaires — avec une attention constante à leur équilibre personnel.
+                    </p>
+                </div>
+
+                <!-- Les 4 constats auxquels nous répondons -->
+                <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-cream-off p-6 rounded-2xl border border-gold/20 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center mb-4">
+                            <i data-lucide="clock" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-serif text-lg font-bold text-navy mb-2">Temps personnel</h3>
+                        <p class="text-sm text-charcoal/75">Les responsabilités quotidiennes prennent trop souvent la place de la vie personnelle et des proches.</p>
+                    </div>
+
+                    <div class="bg-cream-off p-6 rounded-2xl border border-gold/20 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-bordeaux text-white flex items-center justify-center mb-4">
+                            <i data-lucide="user-x" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-serif text-lg font-bold text-navy mb-2">Solitude du dirigeant</h3>
+                        <p class="text-sm text-charcoal/75">L'isolement complique la prise de recul et les décisions stratégiques importantes.</p>
+                    </div>
+
+                    <div class="bg-cream-off p-6 rounded-2xl border border-gold/20 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-sage text-white flex items-center justify-center mb-4">
+                            <i data-lucide="trending-up" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-serif text-lg font-bold text-navy mb-2">Avenir financier</h3>
+                        <p class="text-sm text-charcoal/75">L’organisation patrimoniale et les projets d'avenir passent souvent après l’urgence opérationnelle.</p>
+                    </div>
+
+                    <div class="bg-cream-off p-6 rounded-2xl border border-gold/20 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-gold text-navy flex items-center justify-center mb-4">
+                            <i data-lucide="sun" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-serif text-lg font-bold text-navy mb-2">Qualité de vie</h3>
+                        <p class="text-sm text-charcoal/75">L’entrepreneur aspire à continuer de progresser tout en profitant pleinement de sa vie.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pour Qui ? -->
+            <div class="bg-navy text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+                <div class="absolute right-0 top-0 w-64 h-64 bg-gold/10 rounded-full -translate-y-1/2 translate-x-1/3"></div>
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold">Pour qui ?</span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-white">Des entrepreneurs qui partagent une même envie de progresser.</h2>
+                        <p class="text-cream/85 leading-relaxed">
+                            Le Cercle s’adresse aux <strong>dirigeants de TPE et PME, indépendants établis, repreneurs, cadres préparant une création ou une reprise, investisseurs et experts</strong> prêts à contribuer.
+                        </p>
+                        <p class="text-sm text-cream/75 leading-relaxed">
+                            Nous recherchons des personnes ouvertes, respectueuses et disposées à contribuer à la communauté. La sélection tient compte de la cohérence des attentes avec l’offre, de la motivation et de la capacité à participer.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-4 justify-end">
+                        <a href="#candidature" class="w-full text-center bg-gold hover:bg-gold-light text-navy font-bold px-6 py-4 rounded-xl uppercase tracking-wider text-sm transition shadow-lg">
+                            Vérifier si le Cercle me correspond
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 2 : LE CERCLE (FONDATEURS, MISSION & VALEURS)
+    ====================================================================== -->
+    <section id="le-cercle" class="py-16 sm:py-24 bg-cream-off">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- En-tête Qui sommes-nous -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-bordeaux">Qui sommes-nous</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-navy">Trois parcours réunis autour d’une même conviction</h2>
+                <p class="text-base text-charcoal/80 leading-relaxed">
+                    Le Cercle est un projet porté par <strong>Marceau NICOLAS-NELSON</strong>, <strong>Zelimir BOZIC</strong> et <strong>Jamal LAMTALSI</strong>. Nous réunissons nos expériences de l’entreprise, du développement commercial, de la technologie et de l’accompagnement entrepreneurial pour construire une communauté privilégiée.
+                </p>
+            </div>
+
+            <!-- Notre Mission (Pleine largeur suite à la suppression du Manifeste) -->
+            <div class="mb-16">
+                <div class="bg-white rounded-3xl p-8 sm:p-10 border border-cream-dark shadow-sm flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-sage">Notre Mission</span>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-navy mt-2 mb-6">
+                            Aider les entrepreneurs à élargir leurs possibilités de vie.
+                        </h3>
+                        <p class="text-sm text-charcoal/80 mb-5">Nous souhaitons leur permettre :</p>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm sm:text-base text-charcoal/90">
+                            <li class="flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-gold/20 text-gold-dark flex items-center justify-center shrink-0"><i data-lucide="users" class="w-4 h-4"></i></span>
+                                <span class="font-medium text-navy">De bénéficier de l’expérience et du soutien de leurs pairs.</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-gold/20 text-gold-dark flex items-center justify-center shrink-0"><i data-lucide="plane" class="w-4 h-4"></i></span>
+                                <span>De voyager et de se ressourcer.</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-gold/20 text-gold-dark flex items-center justify-center shrink-0"><i data-lucide="award" class="w-4 h-4"></i></span>
+                                <span>De progresser dans leur connaissance d’eux-mêmes et leur leadership.</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-gold/20 text-gold-dark flex items-center justify-center shrink-0"><i data-lucide="pie-chart" class="w-4 h-4"></i></span>
+                                <span>De mieux comprendre les mécanismes financiers.</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-gold/20 text-gold-dark flex items-center justify-center shrink-0"><i data-lucide="layers" class="w-4 h-4"></i></span>
+                                <span>D’explorer des sources de revenus complémentaires.</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-gold/20 text-gold-dark flex items-center justify-center shrink-0"><i data-lucide="shield-check" class="w-4 h-4"></i></span>
+                                <span>De préparer des projets avec des personnes de confiance.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-8 pt-5 border-t border-cream-dark text-xs text-charcoal/70 italic">
+                        « La liberté financière représente une aspiration. Chaque membre avance selon sa situation, ses moyens et ses choix. »
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nos 10 Valeurs -->
+            <div class="bg-cream rounded-3xl p-8 sm:p-10 border border-cream-dark">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-bordeaux">Nos Valeurs</span>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-navy mt-1">Les dix piliers de notre culture commune</h3>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="bg-white p-4 rounded-xl border border-gold/20">
+                        <h4 class="font-serif font-bold text-navy text-base mb-1">1. Ambition</h4>
+                        <p class="text-xs text-charcoal/75">Continuer à apprendre et à développer ses possibilités.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-gold/20">
+                        <h4 class="font-serif font-bold text-navy text-base mb-1">2. Contribution</h4>
+                        <p class="text-xs text-charcoal/75">Partager son expérience et être utile aux autres.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-gold/20">
+                        <h4 class="font-serif font-bold text-navy text-base mb-1">3. Confiance</h4>
+                        <p class="text-xs text-charcoal/75">Tenir ses engagements et respecter la confidentialité.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-gold/20">
+                        <h4 class="font-serif font-bold text-navy text-base mb-1">4. Transparence</h4>
+                        <p class="text-xs text-charcoal/75">Expliquer les coûts, les rémunérations et les responsabilités.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-gold/20">
+                        <h4 class="font-serif font-bold text-navy text-base mb-1">5. Liberté de choix</h4>
+                        <p class="text-xs text-charcoal/75">Permettre à chacun de sélectionner ses activités et ses projets.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-gold/20">
+                        <h4 class="font-serif font-bold text-navy text-base mb-1">6. Qualité de vie</h4>
+                        <p class="text-xs text-charcoal/75">Accorder de la place à la santé, aux proches et aux expériences.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-gold/20">
+                        <h4 class="font-serif font-bold text-navy text-base mb-1">7. Responsabilité</h4>
+                        <p class="text-xs text-charcoal/75">Examiner les opportunités avec autant d’attention que leurs contraintes.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-gold/20">
+                        <h4 class="font-serif font-bold text-navy text-base mb-1">8. Exigence</h4>
+                        <p class="text-xs text-charcoal/75">Rechercher des contenus utiles, des intervenants compétents et des échanges préparés.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-gold/20">
+                        <h4 class="font-serif font-bold text-navy text-base mb-1">9. Respect</h4>
+                        <p class="text-xs text-charcoal/75">Tenir compte des parcours, convictions, limites et rythmes de chacun.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-gold/20">
+                        <h4 class="font-serif font-bold text-navy text-base mb-1">10. Passage à l’action</h4>
+                        <p class="text-xs text-charcoal/75">Relier les rencontres et les enseignements à des avancées concrètes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 3 : NOS 8 PÔLES (EXPLORATEUR INTERACTIF)
+    ====================================================================== -->
+    <section id="poles" class="py-16 sm:py-24 bg-navy text-white relative overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gold/10 blur-3xl pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold">Architecture du Club</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white">Nos Huit Pôles d’Accompagnement</h2>
+                <p class="text-sm sm:text-base text-cream/80 leading-relaxed">
+                    Sélectionnez un pôle ci-dessous pour découvrir les formats envisagés, notre approche et les conditions d'accès.
+                </p>
+            </div>
+
+            <!-- Grille de sélection des 8 pôles -->
+            <div id="poles-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <!-- Injecté dynamiquement par renderPoles() -->
+            </div>
+
+            <!-- Panneau détaillé du pôle sélectionné -->
+            <div id="pole-detail-panel" class="bg-cream text-charcoal rounded-3xl p-6 sm:p-10 shadow-2xl border-2 border-gold/40">
+                <!-- Injecté dynamiquement par renderPoles() -->
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 4 : PARCOURS POUR NOUS REJOINDRE
+    ====================================================================== -->
+    <section id="rencontres" class="py-16 sm:py-24 bg-cream-off">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Les 4 Étapes pour nous rejoindre -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-bordeaux">Parcours d’Intégration</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-navy mt-2">Commençons par faire connaissance</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                <div class="bg-white p-7 rounded-2xl border border-gold/25 shadow-sm relative">
+                    <span class="text-4xl font-serif font-bold text-gold/30 absolute top-4 right-5">01</span>
+                    <div class="w-11 h-11 rounded-xl bg-navy text-gold flex items-center justify-center mb-4">
+                        <i data-lucide="file-text" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-navy mb-2">Votre candidature</h3>
+                    <p class="text-sm text-charcoal/75 leading-relaxed">
+                        Décrivez votre activité, votre situation, vos pôles d'intérêt et vos attentes via notre formulaire dédié.
+                    </p>
+                </div>
+
+                <div class="bg-white p-7 rounded-2xl border border-gold/25 shadow-sm relative">
+                    <span class="text-4xl font-serif font-bold text-gold/30 absolute top-4 right-5">02</span>
+                    <div class="w-11 h-11 rounded-xl bg-navy text-gold flex items-center justify-center mb-4">
+                        <i data-lucide="message-square" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-navy mb-2">Un entretien</h3>
+                    <p class="text-sm text-charcoal/75 leading-relaxed">
+                        Un échange privilégié permet de comprendre vos priorités et de vous présenter en détail le fonctionnement du Cercle.
+                    </p>
+                </div>
+
+                <div class="bg-white p-7 rounded-2xl border border-gold/25 shadow-sm relative">
+                    <span class="text-4xl font-serif font-bold text-gold/30 absolute top-4 right-5">03</span>
+                    <div class="w-11 h-11 rounded-xl bg-navy text-gold flex items-center justify-center mb-4">
+                        <i data-lucide="file-check-2" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-navy mb-2">Proposition détaillée</h3>
+                    <p class="text-sm text-charcoal/75 leading-relaxed">
+                        Vous recevez le programme disponible, les prestations incluses, le tarif, la durée et les conditions d’adhésion et de résiliation.
+                    </p>
+                </div>
+
+                <div class="bg-white p-7 rounded-2xl border border-gold/25 shadow-sm relative">
+                    <span class="text-4xl font-serif font-bold text-gold/30 absolute top-4 right-5">04</span>
+                    <div class="w-11 h-11 rounded-xl bg-gold text-navy flex items-center justify-center mb-4">
+                        <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-navy mb-2">Votre intégration</h3>
+                    <p class="text-sm text-charcoal/75 leading-relaxed">
+                        Après validation mutuelle et souscription, nous définissons votre première étape et les formats adaptés à vos besoins.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#candidature" class="inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-navy font-bold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition shadow-lg">
+                    <span>Présenter ma candidature</span>
+                    <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+                <p class="text-xs text-charcoal/65 mt-3">La candidature ne constitue ni une adhésion ni un engagement financier.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 6 : FORMULAIRE DE CANDIDATURE INTERACTIF (10 QUESTIONS EXACTES)
+    ====================================================================== -->
+    <section id="candidature" class="py-16 sm:py-24 bg-navy text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-96 h-96 rounded-full bg-gold/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-bordeaux/25 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold">Candidature</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white">Votre prochaine étape commence par une rencontre.</h2>
+                <p class="text-sm sm:text-base text-cream/80">
+                    Ce formulaire nous aide à comprendre vos attentes et à préparer notre échange. <strong>Son envoi ne constitue aucun engagement financier.</strong>
+                </p>
+            </div>
+
+            <!-- Conteneur du Formulaire Multi-étapes -->
+            <div class="bg-cream text-charcoal rounded-3xl shadow-2xl border-2 border-gold/40 overflow-hidden">
+                <!-- Barre de progression -->
+                <div class="bg-navy-dark px-6 sm:px-10 py-5 border-b border-white/10">
+                    <div class="flex items-center justify-between text-xs text-cream/80 mb-2">
+                        <span id="step-label" class="font-bold text-gold uppercase tracking-wider">Étape 1 sur 4 — Coordonnées & Parrainage</span>
+                        <span id="step-percent" class="font-mono text-gold-light">25%</span>
+                    </div>
+                    <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div id="progress-bar" class="h-full bg-gold transition-all duration-300" style="width: 25%"></div>
+                    </div>
+                </div>
+
+                <!-- Formulaire -->
+                <form id="candidature-form" class="p-6 sm:p-10" novalidate>
+                    
+                    <!-- ÉTAPE 1 : Q1 & Q2 -->
+                    <div class="form-step space-y-6" data-step="1">
+                        <div>
+                            <h3 class="font-serif text-2xl font-bold text-navy mb-1">1. Vos coordonnées</h3>
+                            <p class="text-xs text-charcoal/70 mb-4">Ces informations nous permettent de vous recontacter pour planifier notre échange.</p>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">Nom et prénom *</label>
+                                    <input type="text" name="fullName" required placeholder="Ex : Jean Dupont" class="w-full px-4 py-3 rounded-xl bg-white border border-cream-dark focus:border-gold focus:ring-2 focus:ring-gold/30 outline-none text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">Adresse électronique *</label>
+                                    <input type="email" name="email" required placeholder="jean.dupont@entreprise.fr" class="w-full px-4 py-3 rounded-xl bg-white border border-cream-dark focus:border-gold focus:ring-2 focus:ring-gold/30 outline-none text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">Téléphone *</label>
+                                    <input type="tel" name="phone" required placeholder="06 00 00 00 00" class="w-full px-4 py-3 rounded-xl bg-white border border-cream-dark focus:border-gold focus:ring-2 focus:ring-gold/30 outline-none text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">Ville et pays *</label>
+                                    <input type="text" name="cityCountry" required placeholder="Ex : Bordeaux, France" class="w-full px-4 py-3 rounded-xl bg-white border border-cream-dark focus:border-gold focus:ring-2 focus:ring-gold/30 outline-none text-sm">
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">Entreprise et fonction *</label>
+                                    <input type="text" name="companyRole" required placeholder="Ex : Dirigeant / Fondateur — Nom de votre société" class="w-full px-4 py-3 rounded-xl bg-white border border-cream-dark focus:border-gold focus:ring-2 focus:ring-gold/30 outline-none text-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-cream-dark">
+                            <h3 class="font-serif text-xl font-bold text-navy mb-3">2. Un membre vous a-t-il recommandé Le Cercle ?</h3>
+                            <div class="flex gap-4">
+                                <label class="flex items-center gap-2.5 bg-white px-5 py-3 rounded-xl border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="recommended" value="Oui" class="accent-navy w-4 h-4">
+                                    <span class="text-sm font-medium">Oui</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 bg-white px-5 py-3 rounded-xl border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="recommended" value="Non" checked class="accent-navy w-4 h-4">
+                                    <span class="text-sm font-medium">Non</span>
+                                </label>
+                            </div>
+                            <div id="recommender-field" class="hidden mt-3">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">Si oui, nom et prénom du membre :</label>
+                                <input type="text" name="recommenderName" placeholder="Nom et prénom du membre qui vous a invité" class="w-full px-4 py-3 rounded-xl bg-white border border-cream-dark focus:border-gold outline-none text-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ÉTAPE 2 : Q3 & Q4 -->
+                    <div class="form-step hidden space-y-6" data-step="2">
+                        <div>
+                            <h3 class="font-serif text-2xl font-bold text-navy mb-1">3. Qu’est-ce qui vous attire dans Le Cercle ?</h3>
+                            <p class="text-xs text-charcoal/70 mb-4">Plusieurs réponses possibles. Sélectionnez les pôles qui résonnent avec vos priorités.</p>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                <label class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold transition">
+                                    <input type="checkbox" name="interests" value="Voyages et expériences" class="accent-navy w-4 h-4 rounded">
+                                    <span class="text-sm font-medium">Voyages et expériences</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold transition">
+                                    <input type="checkbox" name="interests" value="Développement personnel et leadership" class="accent-navy w-4 h-4 rounded">
+                                    <span class="text-sm font-medium">Développement personnel et leadership</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold transition">
+                                    <input type="checkbox" name="interests" value="Diversification des revenus" class="accent-navy w-4 h-4 rounded">
+                                    <span class="text-sm font-medium">Diversification des revenus</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold transition">
+                                    <input type="checkbox" name="interests" value="Éducation et organisation financières" class="accent-navy w-4 h-4 rounded">
+                                    <span class="text-sm font-medium">Éducation et organisation financières</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold transition">
+                                    <input type="checkbox" name="interests" value="Santé et bien-être" class="accent-navy w-4 h-4 rounded">
+                                    <span class="text-sm font-medium">Santé et bien-être</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold transition">
+                                    <input type="checkbox" name="interests" value="Événements" class="accent-navy w-4 h-4 rounded">
+                                    <span class="text-sm font-medium">Événements</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold transition">
+                                    <input type="checkbox" name="interests" value="Entraide entrepreneuriale" class="accent-navy w-4 h-4 rounded">
+                                    <span class="text-sm font-medium">Entraide entrepreneuriale</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold transition">
+                                    <input type="checkbox" name="interests" value="Communauté et réseau" class="accent-navy w-4 h-4 rounded">
+                                    <span class="text-sm font-medium">Communauté et réseau</span>
+                                </label>
+                                <label class="sm:col-span-2 flex items-center gap-3 p-3.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold transition">
+                                    <input type="checkbox" name="interests" value="Projets d’investissement collectif" class="accent-navy w-4 h-4 rounded">
+                                    <span class="text-sm font-medium">Projets d’investissement collectif</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-cream-dark">
+                            <h3 class="font-serif text-xl font-bold text-navy mb-2">4. Quelle évolution aimeriez-vous concrétiser dans les douze prochains mois ?</h3>
+                            <textarea name="evolution12Months" rows="4" placeholder="Décrivez librement vos objectifs professionnels, patrimoniaux ou personnels..." class="w-full px-4 py-3 rounded-xl bg-white border border-cream-dark focus:border-gold focus:ring-2 focus:ring-gold/30 outline-none text-sm"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- ÉTAPE 3 : Q5, Q6, Q7 & Q8 -->
+                    <div class="form-step hidden space-y-6" data-step="3">
+                        <!-- Q5 -->
+                        <div>
+                            <h3 class="font-serif text-xl font-bold text-navy mb-1">5. Quel budget mensuel global envisageriez-vous pour l’abonnement et les services réguliers du Cercle, hors voyages réservés et investissements ?</h3>
+                            <p class="text-xs text-charcoal/70 mb-3 italic">Ces fourchettes qualifient les attentes et ne constituent pas une grille tarifaire.</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="monthlyBudget" value="Moins de 100 €" class="accent-navy">
+                                    <span class="text-sm">Moins de 100 €</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="monthlyBudget" value="De 100 à moins de 200 €" class="accent-navy">
+                                    <span class="text-sm">De 100 à moins de 200 €</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="monthlyBudget" value="De 200 à moins de 350 €" class="accent-navy">
+                                    <span class="text-sm">De 200 à moins de 350 €</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="monthlyBudget" value="De 350 à 500 €" class="accent-navy">
+                                    <span class="text-sm">De 350 à 500 €</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="monthlyBudget" value="Plus de 500 €" class="accent-navy">
+                                    <span class="text-sm">Plus de 500 €</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="monthlyBudget" value="Je souhaite d’abord connaître le détail de l’offre" checked class="accent-navy">
+                                    <span class="text-sm">Je souhaite d’abord connaître le détail de l’offre</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Q6 -->
+                        <div class="pt-4 border-t border-cream-dark">
+                            <h3 class="font-serif text-xl font-bold text-navy mb-3">6. Souhaitez-vous découvrir l’activité d’ambassadeur indépendant MWR Life ?</h3>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="ambassadorInterest" value="Oui, pour envisager une activité complémentaire" class="accent-navy">
+                                    <span class="text-sm">Oui, pour envisager une activité complémentaire</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="ambassadorInterest" value="Je souhaite comprendre son fonctionnement avant de décider" checked class="accent-navy">
+                                    <span class="text-sm">Je souhaite comprendre son fonctionnement avant de décider</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="ambassadorInterest" value="Mon intérêt porte sur le voyage et les services du Cercle" class="accent-navy">
+                                    <span class="text-sm">Mon intérêt porte sur le voyage et les services du Cercle</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Q7 -->
+                        <div class="pt-4 border-t border-cream-dark">
+                            <h3 class="font-serif text-xl font-bold text-navy mb-3">7. Envisagez-vous de participer à des projets d’investissement ?</h3>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="investParticipation" value="Oui, dans les douze prochains mois" class="accent-navy">
+                                    <span class="text-sm">Oui, dans les douze prochains mois</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="investParticipation" value="Peut-être, après avoir approfondi mes connaissances" checked class="accent-navy">
+                                    <span class="text-sm">Peut-être, après avoir approfondi mes connaissances</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="investParticipation" value="Ce n’est pas ma priorité actuelle" class="accent-navy">
+                                    <span class="text-sm">Ce n’est pas ma priorité actuelle</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Q8 -->
+                        <div class="pt-4 border-t border-cream-dark">
+                            <h3 class="font-serif text-xl font-bold text-navy mb-1">8. Si vous le souhaitez, quelle enveloppe pourriez-vous envisager de consacrer à ces projets ?</h3>
+                            <p class="text-xs text-charcoal/70 mb-3">Question facultative, distincte du budget d’adhésion.</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="investEnvelope" value="Moins de 5 000 €" class="accent-navy">
+                                    <span class="text-sm">Moins de 5 000 €</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="investEnvelope" value="De 5 000 à moins de 15 000 €" class="accent-navy">
+                                    <span class="text-sm">De 5 000 à moins de 15 000 €</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="investEnvelope" value="De 15 000 à moins de 30 000 €" class="accent-navy">
+                                    <span class="text-sm">De 15 000 à moins de 30 000 €</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="investEnvelope" value="De 30 000 à moins de 50 000 €" class="accent-navy">
+                                    <span class="text-sm">De 30 000 à moins de 50 000 €</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="investEnvelope" value="De 50 000 à 100 000 €" class="accent-navy">
+                                    <span class="text-sm">De 50 000 à 100 000 €</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="investEnvelope" value="Plus de 100 000 €" class="accent-navy">
+                                    <span class="text-sm">Plus de 100 000 €</span>
+                                </label>
+                                <label class="sm:col-span-2 flex items-center gap-2.5 p-2.5 rounded-xl bg-white border border-cream-dark cursor-pointer hover:border-gold">
+                                    <input type="radio" name="investEnvelope" value="Je préfère en parler lors de l’entretien" checked class="accent-navy">
+                                    <span class="text-sm">Je préfère en parler lors de l’entretien</span>
+                                </label>
+                            </div>
+                            <p class="text-[11px] text-charcoal/65 italic mt-2">
+                                Cette indication exprime un intérêt initial. Elle ne constitue ni une promesse d’investissement ni une évaluation de l’adéquation d’un placement à votre situation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ÉTAPE 4 : Q9, Q10 & VALIDATION -->
+                    <div class="form-step hidden space-y-6" data-step="4">
+                        <div>
+                            <h3 class="font-serif text-xl font-bold text-navy mb-1">9. Qu’aimeriez-vous apporter à la communauté ?</h3>
+                            <p class="text-xs text-charcoal/70 mb-2">Expérience, expertise, contacts, idées ou disponibilité.</p>
+                            <textarea name="contribution" rows="3" placeholder="Partagez ce que vous aimez transmettre ou apporter à d'autres dirigeants..." class="w-full px-4 py-3 rounded-xl bg-white border border-cream-dark focus:border-gold outline-none text-sm"></textarea>
+                        </div>
+
+                        <div class="pt-4 border-t border-cream-dark">
+                            <h3 class="font-serif text-xl font-bold text-navy mb-1">10. Vos disponibilités pour un premier entretien</h3>
+                            <p class="text-xs text-charcoal/70 mb-2">Précisez vos jours et créneaux préférentiels (présentiel sur Bordeaux ou visioconférence).</p>
+                            <input type="text" name="availability" placeholder="Ex : Mardis et jeudis matin, ou vendredi après-midi" class="w-full px-4 py-3 rounded-xl bg-white border border-cream-dark focus:border-gold outline-none text-sm">
+                        </div>
+
+                        <div class="pt-4 border-t border-cream-dark space-y-3">
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" id="privacy-consent" required class="accent-navy w-4 h-4 mt-1 rounded">
+                                <span class="text-xs sm:text-sm text-charcoal/90">
+                                    J’ai pris connaissance de la <button type="button" onclick="openLegalModal('confidentialite')" class="underline text-bordeaux font-semibold">politique de confidentialité</button> et j'accepte l’utilisation de mes informations pour examiner ma candidature. *
+                                </span>
+                            </label>
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" name="newsletter" class="accent-navy w-4 h-4 mt-1 rounded">
+                                <span class="text-xs sm:text-sm text-charcoal/75">
+                                    Je souhaite également recevoir les actualités et invitations du Cercle. (Facultatif)
+                                </span>
+                            </label>
+                            <p class="text-[11px] text-charcoal/60 italic pt-1">
+                                Les informations sont utilisées uniquement pour examiner votre demande, selon la politique de confidentialité. Aucune information de santé ni justificatif financier n'est demandé dans ce formulaire général.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Message d'erreur validation inline -->
+                    <div id="form-error-box" class="hidden mt-5 p-3.5 rounded-xl bg-bordeaux/10 border border-bordeaux text-bordeaux text-xs sm:text-sm font-medium flex items-center gap-2">
+                        <i data-lucide="alert-circle" class="w-4 h-4 shrink-0"></i>
+                        <span id="form-error-text">Veuillez renseigner les champs obligatoires.</span>
+                    </div>
+
+                    <!-- Boutons de navigation du formulaire -->
+                    <div class="flex items-center justify-between pt-8 mt-6 border-t border-cream-dark">
+                        <button type="button" id="prev-step-btn" class="hidden px-5 py-3 rounded-xl border border-navy/20 text-navy font-semibold text-sm hover:bg-navy/5 transition">
+                            ← Précédent
+                        </button>
+                        <div class="ml-auto flex gap-3">
+                            <button type="button" id="next-step-btn" class="bg-navy hover:bg-navy-light text-gold font-bold px-7 py-3.5 rounded-xl text-sm uppercase tracking-wider transition shadow-md">
+                                Étape suivante →
+                            </button>
+                            <button type="submit" id="submit-form-btn" class="hidden bg-gold hover:bg-gold-light text-navy font-bold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition shadow-lg">
+                                Envoyer ma candidature
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Écran de Confirmation après envoi -->
+                <div id="form-success-screen" class="hidden p-8 sm:p-12 text-center space-y-6">
+                    <div class="w-16 h-16 rounded-full bg-sage text-white flex items-center justify-center mx-auto shadow-lg">
+                        <i data-lucide="check" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-serif text-3xl font-bold text-navy">Candidature enregistrée avec succès</h3>
+                    <p class="text-base text-charcoal/85 max-w-xl mx-auto leading-relaxed" id="success-summary-text">
+                        Merci pour votre intérêt pour Le Cercle. Marceau, Zelimir et Jamal vont étudier votre profil et reviendront vers vous très prochainement pour convenir d'un premier échange.
+                    </p>
+                    <div id="recap-card" class="max-w-lg mx-auto bg-white p-5 rounded-2xl border border-gold/30 text-left text-xs space-y-2 text-charcoal/80">
+                        <!-- Récapitulatif injecté -->
+                    </div>
+                    <p class="text-xs text-charcoal/60 italic">
+                        Rappel : cet envoi ne constitue ni une adhésion définitive ni un engagement financier.
+                    </p>
+                    <button type="button" onclick="resetCandidatureForm()" class="text-xs font-bold uppercase tracking-wider text-bordeaux underline">
+                        Modifier ou soumettre une nouvelle demande
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 7 : PIED DE PAGE COMPLET
+    ====================================================================== -->
+    <footer class="bg-charcoal text-cream/80 pt-14 pb-10 border-t border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-white/10">
+                <!-- Colonne Identité -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full border border-gold flex items-center justify-center bg-navy">
+                            <span class="font-serif text-gold font-bold text-lg">C</span>
+                        </div>
+                        <span class="font-serif text-xl font-semibold text-white tracking-wider">LE CERCLE</span>
+                    </div>
+                    <p class="text-sm text-cream/70 leading-relaxed">
+                        Club privé d’entrepreneurs passionnés par le développement personnel, les voyages et la liberté financière. Projet porté par Marceau NICOLAS-NELSON, Zelimir BOZIC et Jamal LAMTALSI.
+                    </p>
+                    <p class="text-xs text-gold-light">
+                        Ancrage : Bordeaux & Nouvelle-Aquitaine · Passerelles entre territoires.
+                    </p>
+                </div>
+
+                <!-- Colonne Navigation rapide -->
+                <div class="md:col-span-3 space-y-2.5 text-sm">
+                    <h4 class="font-serif font-bold text-white text-base mb-3">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#accueil" class="hover:text-gold transition">Accueil</a></li>
+                        <li><a href="#le-cercle" class="hover:text-gold transition">Qui sommes-nous & Mission</a></li>
+                        <li><a href="#poles" class="hover:text-gold transition">Nos 8 Pôles</a></li>
+                        <li><a href="#rencontres" class="hover:text-gold transition">Adhésion & Parcours</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne Cadre & Transparence -->
+                <div class="md:col-span-4 space-y-2.5 text-sm">
+                    <h4 class="font-serif font-bold text-white text-base mb-3">Cadre & Informations légales</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li><button onclick="openLegalModal('contact')" class="hover:text-gold transition text-left">Contact</button></li>
+                        <li><button onclick="openLegalModal('mentions')" class="hover:text-gold transition text-left">Mentions légales</button></li>
+                        <li><button onclick="openLegalModal('confidentialite')" class="hover:text-gold transition text-left">Politique de confidentialité</button></li>
+                        <li><button onclick="openLegalModal('cookies')" class="hover:text-gold transition text-left">Gestion des cookies</button></li>
+                        <li><button onclick="openLegalModal('conditions')" class="hover:text-gold transition text-left">Conditions d’adhésion</button></li>
+                        <li><button onclick="openLegalModal('charte')" class="hover:text-gold transition text-left">Charte des membres</button></li>
+                        <li><button onclick="openLegalModal('partenaires')" class="hover:text-gold transition text-left">Informations sur les partenaires et rémunérations</button></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-cream/50">
+                <p>© 2026 Le Cercle (Nom provisoire) — Tous droits réservés. Document de pré-lancement.</p>
+                <p class="text-center sm:text-right">Les activités du Cercle sont indépendantes de MWR Life / Travel Advantage.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODALE LÉGALE & TRANSPARENCE -->
+    <div id="legal-modal" class="fixed inset-0 z-50 hidden bg-navy-dark/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-cream text-charcoal rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-gold/40">
+            <div class="p-6 border-b border-cream-dark flex items-center justify-between">
+                <h3 id="modal-title" class="font-serif text-2xl font-bold text-navy">Informations</h3>
+                <button onclick="closeLegalModal()" class="p-2 rounded-full hover:bg-charcoal/10 text-charcoal">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div id="modal-body" class="p-6 overflow-y-auto text-sm text-charcoal/85 space-y-4 leading-relaxed">
+                <!-- Contenu dynamique -->
+            </div>
+            <div class="p-4 border-t border-cream-dark text-right">
+                <button onclick="closeLegalModal()" class="bg-navy text-gold font-bold px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider">
+                    Fermer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         JAVASCRIPT : DONNÉES & INTERACTIVITÉ
+    ====================================================================== -->
+    <script>
+        // 1. DONNÉES DES 8 PÔLES (Ordre réorganisé selon les permutations demandées)
+        const polesData = [
+            {
+                id: 1,
+                shortTitle: "Communauté & Réseau d’Experts",
+                title: "Pôle 1 : Communauté et réseau d’experts",
+                tagline: "Savoir qui solliciter, au bon moment.",
+                icon: "network",
+                accent: "bg-sage text-white",
+                description: "Un réseau prend toute sa valeur lorsque les relations deviennent fiables, confidentielles et utiles. Nous réunissons entrepreneurs, investisseurs et experts disposés à se recommander avec discernement.",
+                bullets: [
+                    "Annuaire privé et qualifié des membres et des experts du Cercle",
+                    "Mises en relation préparées avec l’accord préalable des personnes",
+                    "Espaces d’échange modérés et respectueux du temps de chacun",
+                    "Partage structuré des besoins et des contributions",
+                    "Conditions préférentielles négociées lorsque des accords sont conclus"
+                ],
+                notice: "Éthique commerciale : La communauté repose sur la confidentialité et la transparence. Une mise en relation ouvre une possibilité d’échange ; les prestations éventuelles sont convenues directement dans un cadre explicite.",
+                cta: "Découvrir la communauté"
+            },
+            {
+                id: 2,
+                shortTitle: "Éducation & Organisation Financières",
+                title: "Pôle 2 : Éducation et organisation financières",
+                tagline: "Comprendre vos options avant d’engager votre argent.",
+                icon: "landmark",
+                accent: "bg-navy text-gold",
+                description: "Créer des revenus et savoir les organiser sont deux compétences différentes. Ce pôle vise à vous aider à mieux comprendre l’organisation de votre patrimoine et les questions liées à votre trésorerie professionnelle.",
+                bullets: [
+                    "Ateliers d’éducation financière accessibles et concrets",
+                    "Compréhension du couple rendement, risque et liquidité",
+                    "Préparation des bonnes questions à poser à un professionnel",
+                    "Rencontres avec des spécialistes habilités",
+                    "Réflexion structurée sur vos besoins à court, moyen et long terme"
+                ],
+                notice: "Cadre réglementaire : Les recommandations personnalisées et les éventuelles solutions de placement relèveront exclusivement des professionnels autorisés à les fournir.",
+                cta: "Approfondir mes connaissances financières"
+            },
+            {
+                id: 3,
+                shortTitle: "Entraide Entrepreneuriale",
+                title: "Pôle 3 : Entraide entrepreneuriale",
+                tagline: "Un espace pour travailler sur les sujets que vous portez seul.",
+                icon: "handshake",
+                accent: "bg-bordeaux text-white",
+                description: "La solitude du dirigeant se vit souvent au moment de prendre une décision difficile. Vous apportez votre expérience et bénéficiez de l'intelligence collective de vos pairs.",
+                bullets: [
+                    "Groupes d’entraide entre pairs (codéveloppement sur situations réelles)",
+                    "Échanges de pratiques et retours d’expérience sans filtre",
+                    "Aide au cadrage et à la structuration de projets",
+                    "Mises en relation pour la création, le développement ou la reprise d’entreprise",
+                    "Préparation à la recherche de financement ou à une levée de fonds"
+                ],
+                notice: "Périmètre : Les accompagnements individuels spécifiques feront l’objet d’un périmètre défini et, lorsqu’ils sont payants, d’un devis distinct validé au préalable.",
+                cta: "Présenter mon besoin"
+            },
+            {
+                id: 4,
+                shortTitle: "Développement Personnel & Leadership",
+                title: "Pôle 4 : Développement personnel et leadership",
+                tagline: "Mieux vous connaître pour mieux décider et agir.",
+                icon: "compass",
+                accent: "bg-navy text-gold",
+                description: "Avant de diriger les autres, il faut apprendre à se connaître. Nous préparons des ateliers, masterclass et accompagnements reliés à vos situations concrètes de dirigeant.",
+                bullets: [
+                    "Confiance en soi, connaissance de ses réactions et posture de dirigeant",
+                    "Prise de décision en situation d’incertitude",
+                    "Délégation efficace, clarté des priorités et passage à l’action",
+                    "Préparation mentale, discipline et résilience face aux périodes de doute",
+                    "Communication d'influence et gestion constructive des désaccords"
+                ],
+                notice: "Approche pragmatique : Chaque format relie les enseignements à une situation réelle du participant. Les intervenants, partenaires et modalités seront annoncés dans le programme d'ouverture.",
+                cta: "Travailler sur ma prochaine étape"
+            },
+            {
+                id: 5,
+                shortTitle: "Santé & Bien-être",
+                title: "Pôle 5 : Santé et bien-être",
+                tagline: "Préserver votre énergie fait partie de votre projet entrepreneurial.",
+                icon: "heart-pulse",
+                accent: "bg-sage text-white",
+                description: "L’énergie avec laquelle vous dirigez mérite toute votre attention. Ce pôle prévoit des actions concrètes autour de la récupération, de la prévention et de l’équilibre personnel et mental.",
+                bullets: [
+                    "Ateliers pratiques sur la gestion du stress et les habitudes de récupération",
+                    "Activités physiques ou de détente adaptées au programme",
+                    "Temps d’échange et sensibilisation à la santé mentale du dirigeant (avec respect et confidentialité)",
+                    "Séjours de ressourcement dédiés",
+                    "Orientation vers des professionnels qualifiés lorsque cela est nécessaire"
+                ],
+                notice: "Cadre santé : La qualification des intervenants sera précisée pour chaque format. Les activités de bien-être et de prévention ne remplacent pas une consultation ou une prise en charge médicale ou psychologique.",
+                cta: "Découvrir l’approche bien-être"
+            },
+            {
+                id: 6,
+                shortTitle: "Événements & Rencontres",
+                title: "Pôle 6 : Événements et expériences collectives",
+                tagline: "Des rencontres pour apprendre, échanger et avancer.",
+                icon: "calendar",
+                accent: "bg-gold text-navy",
+                description: "Nous concevons des rencontres conviviales et exigeantes où l’on peut parler librement de ses projets, poser ses questions et prendre le temps de tisser des liens durables entre pairs.",
+                bullets: [
+                    "Dîners privés et rencontres thématiques (lancement à Bordeaux & Nouvelle-Aquitaine)",
+                    "Conférences et masterclass inspirantes",
+                    "Bootcamps immersifs et séminaires",
+                    "Visites d’entreprises et retours terrain",
+                    "Rencontres à distance régulières entre membres pour maintenir la dynamique"
+                ],
+                notice: "Modalités : Chaque rendez-vous précisera en amont son objectif, son public, son tarif éventuel et ses conditions de participation.",
+                cta: "Consulter les prochains rendez-vous"
+            },
+            {
+                id: 7,
+                shortTitle: "Voyages & Expériences",
+                title: "Pôle 7 : Voyages et expériences",
+                tagline: "Travel Advantage, le socle de notre offre voyage.",
+                icon: "plane",
+                accent: "bg-gold text-navy",
+                description: "Nous avons choisi de construire le socle de notre offre voyage autour de Travel Advantage pour permettre aux membres de réserver leurs séjours selon les services et conditions de la formule souscrite, tout en créant des expériences collectives entre entrepreneurs.",
+                bullets: [
+                    "Accès à la plateforme Travel Advantage selon la formule souscrite",
+                    "Escapades et découvertes entre membres du Cercle",
+                    "Séjours de ressourcement et déconnexion",
+                    "Voyages d’affaires et visites d’entreprises",
+                    "Rencontres entrepreneuriales à l’étranger pour élargir votre réseau"
+                ],
+                notice: "Transparence : Avant toute souscription, vous recevez les informations complètes sur l’abonnement, les frais éventuels, les avantages et leurs conditions d’utilisation. Les tarifs et économies dépendent des réservations comparées.",
+                cta: "Découvrir le parcours voyage"
+            },
+            {
+                id: 8,
+                shortTitle: "Diversification des Revenus",
+                title: "Pôle 8 : Diversification des revenus",
+                tagline: "Construire progressivement d’autres sources de revenus.",
+                icon: "trending-up",
+                accent: "bg-bordeaux text-white",
+                description: "Inspiré par la réflexion de Robert Kiyosaki dans Père riche, père pauvre (« Les pauvres travaillent pour l'argent, les riches font l'argent travailler pour eux »), ce pôle explore trois voies complémentaires pour ne plus faire reposer vos revenus uniquement sur votre disponibilité.",
+                bullets: [
+                    "Voie 1 — Ambassadeur indépendant / affiliation MWR Life (facultatif) : activité de recommandation autour des abonnements voyage soumise aux règles du plan de rémunération.",
+                    "Voie 2 — Investissement dans les PME : étudier des entreprises, comprendre leur modèle économique et envisager une participation individuelle ou collective.",
+                    "Voie 3 — Activités de proximité et modèles structurés : explorer des projets comme les laveries automatiques ou certains réseaux de franchise et microfranchise.",
+                    "Rencontres thématiques pouvant également approfondir l’investissement immobilier."
+                ],
+                notice: "Précision importante : Chaque membre choisit librement son parcours. L’activité commerciale MWR Life (revenus non garantis, nécessitant travail et suivi) et les opérations d’investissement font l’objet de décisions et cadres distincts.",
+                cta: "Explorer les possibilités"
+            }
+        ];
+
+        let activePoleId = 1;
+
+        function renderPoles() {
+            const grid = document.getElementById('poles-grid');
+            grid.innerHTML = polesData.map(pole => {
+                const isActive = pole.id === activePoleId;
+                return `
+                    <button onclick="selectPole(${pole.id})" class="text-left p-5 rounded-2xl border transition-all flex flex-col justify-between h-full ${
+                        isActive 
+                        ? 'bg-gold text-navy border-gold shadow-xl scale-[1.02]' 
+                        : 'bg-navy-light/80 text-white border-white/15 hover:border-gold/60 hover:bg-navy-light'
+                    }">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold uppercase tracking-widest ${isActive ? 'text-navy/80' : 'text-gold'}">Pôle 0${pole.id}</span>
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center ${isActive ? 'bg-navy text-gold' : 'bg-white/10 text-gold'}">
+                                <i data-lucide="${pole.icon}" class="w-4 h-4"></i>
+                            </div>
+                        </div>
+                        <h3 class="font-serif font-bold text-base sm:text-lg leading-snug ${isActive ? 'text-navy' : 'text-white'}">
+                            ${pole.shortTitle}
+                        </h3>
+                    </button>
+                `;
+            }).join('');
+
+            const activePole = polesData.find(p => p.id === activePoleId);
+            const detailPanel = document.getElementById('pole-detail-panel');
+            detailPanel.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${activePole.accent}">
+                            <i data-lucide="${activePole.icon}" class="w-3.5 h-3.5"></i>
+                            <span>${activePole.tagline}</span>
+                        </div>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-navy">${activePole.title}</h3>
+                        <p class="text-sm sm:text-base text-charcoal/85 leading-relaxed">${activePole.description}</p>
+                        
+                        <div class="bg-white p-4 rounded-xl border border-cream-dark text-xs text-charcoal/75 leading-relaxed">
+                            ${activePole.notice}
+                        </div>
+
+                        <div class="pt-2">
+                            <a href="#candidature" class="inline-flex items-center gap-2 bg-navy hover:bg-navy-light text-gold font-bold px-6 py-3.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition">
+                                <span>${activePole.cta}</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-gold/25 shadow-sm">
+                        <h4 class="font-serif font-bold text-navy text-lg mb-4 border-b border-cream-dark pb-2">Au programme envisagé :</h4>
+                        <ul class="space-y-3">
+                            ${activePole.bullets.map(b => `
+                                <li class="flex items-start gap-2.5 text-sm text-charcoal/90">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-gold-dark shrink-0 mt-1"></i>
+                                    <span>${b}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function selectPole(id) {
+            activePoleId = id;
+            renderPoles();
+        }
+
+        // 2. LOGIQUE DU FORMULAIRE MULTI-ÉTAPES
+        let currentStep = 1;
+        const totalSteps = 4;
+        const stepTitles = [
+            "Étape 1 sur 4 — Coordonnées & Parrainage",
+            "Étape 2 sur 4 — Centres d'intérêt & Objectifs à 12 mois",
+            "Étape 3 sur 4 — Budgets, MWR Life & Investissement",
+            "Étape 4 sur 4 — Contribution, Disponibilités & Validation"
+        ];
+
+        const form = document.getElementById('candidature-form');
+        const steps = document.querySelectorAll('.form-step');
+        const prevBtn = document.getElementById('prev-step-btn');
+        const nextBtn = document.getElementById('next-step-btn');
+        const submitBtn = document.getElementById('submit-form-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const stepLabel = document.getElementById('step-label');
+        const stepPercent = document.getElementById('step-percent');
+        const errorBox = document.getElementById('form-error-box');
+        const errorText = document.getElementById('form-error-text');
+
+        // Affichage conditionnel du parrain (Q2)
+        document.querySelectorAll('input[name="recommended"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const field = document.getElementById('recommender-field');
+                if (e.target.value === 'Oui') {
+                    field.classList.remove('hidden');
+                } else {
+                    field.classList.add('hidden');
+                }
+            });
+        });
+
+        function updateStepUI() {
+            steps.forEach(s => {
+                s.classList.toggle('hidden', parseInt(s.dataset.step) !== currentStep);
+            });
+            const percent = Math.round((currentStep / totalSteps) * 100);
+            progressBar.style.width = `${percent}%`;
+            stepLabel.textContent = stepTitles[currentStep - 1];
+            stepPercent.textContent = `${percent}%`;
+
+            prevBtn.classList.toggle('hidden', currentStep === 1);
+            nextBtn.classList.toggle('hidden', currentStep === totalSteps);
+            submitBtn.classList.toggle('hidden', currentStep !== totalSteps);
+            errorBox.classList.add('hidden');
+        }
+
+        function showError(msg) {
+            errorText.textContent = msg;
+            errorBox.classList.remove('hidden');
+        }
+
+        function validateCurrentStep() {
+            if (currentStep === 1) {
+                const fullName = form.fullName.value.trim();
+                const email = form.email.value.trim();
+                const phone = form.phone.value.trim();
+                const cityCountry = form.cityCountry.value.trim();
+                const companyRole = form.companyRole.value.trim();
+                if (!fullName || !email || !phone || !cityCountry || !companyRole) {
+                    showError("Veuillez compléter tous les champs obligatoires de vos coordonnées.");
+                    return false;
+                }
+                if (!email.includes('@')) {
+                    showError("Veuillez saisir une adresse électronique valide.");
+                    return false;
+                }
+            }
+            if (currentStep === 4) {
+                const consent = document.getElementById('privacy-consent').checked;
+                if (!consent) {
+                    showError("Veuillez accepter la politique de confidentialité pour soumettre votre candidature.");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (validateCurrentStep() && currentStep < totalSteps) {
+                currentStep++;
+                updateStepUI();
+                document.getElementById('candidature').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepUI();
+            }
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (!validateCurrentStep()) return;
+
+            const formData = new FormData(form);
+            const selectedInterests = formData.getAll('interests');
+
+            document.getElementById('success-summary-text').innerHTML = `
+                Merci <strong>${formData.get('fullName')}</strong>. Votre candidature pour rejoindre <strong>Le Cercle</strong> (Bordeaux & Nouvelle-Aquitaine) a bien été prise en compte. Marceau, Zelimir et Jamal reviendront vers vous très prochainement.
+            `;
+
+            document.getElementById('recap-card').innerHTML = `
+                <p><strong>Entreprise / Fonction :</strong> ${formData.get('companyRole')}</p>
+                <p><strong>Localisation :</strong> ${formData.get('cityCountry')}</p>
+                <p><strong>Pôles d'intérêt :</strong> ${selectedInterests.length ? selectedInterests.join(', ') : 'À définir lors de l’entretien'}</p>
+                <p><strong>Budget mensuel envisagé :</strong> ${formData.get('monthlyBudget')}</p>
+                <p><strong>Projet d'investissement :</strong> ${formData.get('investParticipation')}</p>
+                <p><strong>Disponibilités :</strong> ${formData.get('availability') || 'Non précisées'}</p>
+            `;
+
+            form.classList.add('hidden');
+            document.getElementById('form-success-screen').classList.remove('hidden');
+        });
+
+        function resetCandidatureForm() {
+            form.reset();
+            currentStep = 1;
+            updateStepUI();
+            document.getElementById('form-success-screen').classList.add('hidden');
+            form.classList.remove('hidden');
+        }
+
+        // 4. MODALES DU PIED DE PAGE (TRANSPARENCE & MENTIONS)
+        const legalContents = {
+            contact: {
+                title: "Contact",
+                body: `<p>Pour toute question relative au lancement du Cercle à Bordeaux et en Nouvelle-Aquitaine, vous pouvez soumettre une demande via le formulaire de candidature ou solliciter un entretien préalable avec les co-fondateurs (Marceau NICOLAS-NELSON, Zelimir BOZIC et Jamal LAMTALSI).</p>`
+            },
+            mentions: {
+                title: "Mentions légales",
+                body: `<p><strong>Statut du projet :</strong> Le Cercle (nom provisoire) est un projet de cercle privé d’entrepreneurs porté par Marceau NICOLAS-NELSON, Zelimir BOZIC et Jamal LAMTALSI, en phase de constitution de sa première communauté à Bordeaux et en Nouvelle-Aquitaine.</p><p>Les partenaires, tarifs définitifs, prestations incluses et conditions contractuelles font l’objet d’une formalisation avant ouverture officielle.</p>`
+            },
+            confidentialite: {
+                title: "Politique de confidentialité",
+                body: `<p>Les informations recueillies dans le formulaire de candidature sont utilisées exclusivement pour examiner votre demande d'adhésion et préparer votre entretien de découverte.</p><p>Aucune information de santé ni justificatif financier n’est demandé dans ce formulaire général. Vos données ne sont jamais cédées à des tiers sans votre accord explicite.</p>`
+            },
+            cookies: {
+                title: "Gestion des cookies",
+                body: `<p>Ce site de présentation utilise uniquement des cookies techniques strictement nécessaires à son bon fonctionnement et à votre confort de navigation.</p>`
+            },
+            conditions: {
+                title: "Conditions d’adhésion",
+                body: `<p>L’entrée dans Le Cercle s’effectue sur candidature suivie d’un entretien. Avant toute souscription, chaque candidat reçoit une proposition détaillée précisant : la formule Travel Advantage concernée, son coût, le bouquet de services du Cercle inclus, les prestations facturées séparément, ainsi que les conditions de maintien, renouvellement et résiliation.</p>`
+            },
+            charte: {
+                title: "Charte des membres",
+                body: `<p>Les membres du Cercle s’engagent à respecter une stricte confidentialité sur les échanges, projets et données partagés au sein du groupe. Les mises en relation s’effectuent uniquement avec l’accord préalable des personnes concernées, dans un esprit d’entraide, d’exigence et de respect mutuel.</p>`
+            },
+            partenaires: {
+                title: "Informations sur les partenaires et rémunérations",
+                body: `<p><strong>Articulation Travel Advantage / MWR Life :</strong> Le Cercle construit son offre communautaire autour d’un abonnement voyage Travel Advantage commercialisé par MWR Life. Les activités du Cercle sont organisées sous sa propre responsabilité et ne constituent pas une prestation fournie par MWR Life ou Travel Advantage.</p><p><strong>Transparence financière :</strong> Lorsqu’un accord prévoit une rémunération ou commission pour les fondateurs lors d’une mise en relation ou d’une souscription, son existence et ses modalités sont communiquées avant l’engagement concerné. Le statut d’ambassadeur MWR Life est strictement facultatif et ses revenus ne sont pas garantis.</p><p><strong>Investissements & Conseils :</strong> Les opérations d’investissement collectif (Club Deal) sont distinctes de l’adhésion, comportent un risque de perte en capital et d’illiquidité. Les conseils financiers personnalisés relèvent exclusivement de professionnels habilités.</p>`
+            }
+        };
+
+        function openLegalModal(key) {
+            const item = legalContents[key];
+            if (!item) return;
+            document.getElementById('modal-title').textContent = item.title;
+            document.getElementById('modal-body').innerHTML = item.body;
+            document.getElementById('legal-modal').classList.remove('hidden');
+        }
+
+        function closeLegalModal() {
+            document.getElementById('legal-modal').classList.add('hidden');
+        }
+
+        // Menu mobile toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Initialisation au chargement
+        window.addEventListener('DOMContentLoaded', () => {
+            renderPoles();
+            updateStepUI();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
